@@ -51,3 +51,22 @@ that could have null or other references in said conventional _Request_ properti
 
 ## Accessing Server's Paths
 
+When working in a server running ASP.NET, we get access to utility classes, DI is 
+our friend here, and when it comes to analyzing information in regard to the executing 
+environment, path, files, or something else, we can leverage `IWebHostEnvironment`, 
+once we get an instance we get access to different properties and methods. However 
+for the focus of this project, we simply wanted to access the root path at where the 
+app is running, and from there we are building another relative path so that we can 
+perhaps _do something there_.
+
+Something worthy of note is that since Core, **works** cross-platform, always keep 
+in mind of defensive code that's not coupled to one OS. That's where `Path` 
+comes into play. We are using one method here `Path.Combine`. This will aggregate 
+different segments/folders that we can feed as arguments to it. **ALWAYS USE THIS**. 
+Do not try to mix-in Linux or Windows paths since depending on the executing environment 
+we might get completely different results by the end, let the utility class work out 
+the kinks of the OS, you should just care about key aspects to feed into the methods. 
+And one kink of this utility class is that if you feed something like `/Path/Path2` to 
+it, it will assume the last argument with a forward slash to be an absolute path 
+and will completely ignore any other paths, it will, in practice, coalesce everything 
+and only care about this **_Absolute_** path.
