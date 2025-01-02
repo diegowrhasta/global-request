@@ -72,9 +72,15 @@ app.MapPost("/coupled-controller", () =>
     return Results.Ok("Did the processing :)");
 });
 
-app.MapGet("/location", () => new
+app.MapGet("/location", () =>
 {
-    Path = HttpContextHelper.Current.Request.Path.Value,
+    var local = Path.Combine(
+        "Storage", "Recipes", "Customers", 1.ToString(), 3.ToString());
+
+    return new
+    {
+        Path = HttpContextHelper.MapPath(local),
+    };
 });
 
 app.Run();
