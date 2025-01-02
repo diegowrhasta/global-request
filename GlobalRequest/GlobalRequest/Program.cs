@@ -1,10 +1,21 @@
+using GlobalRequest.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddSingleton<IService, Service>();
 
 var app = builder.Build();
+
+var (httpContextAccessor, webHostEnvironment) = (
+    app.Services.GetRequiredService<IHttpContextAccessor>(),
+    app.Services.GetRequiredService<IWebHostEnvironment>());
+
+HttpContextHelper.Configure(httpContextAccessor, webHostEnvironment);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -36,6 +47,16 @@ app.MapGet("/weatherforecast", () =>
 app.MapPost("/vanilla", (HttpRequest request) => new
 {
     FilesPresent = request.Form.Files.Any(),
+});
+
+app.MapPost("/static", () => new
+{
+    FilesPresent = HttpContextHelper.Current.Request.Form.Files.Any(),
+});
+
+app.MapPost("/service", (IService service) => new
+{
+    FilesPresent = service.FilesArePresent(),
 });
 
 app.Run();

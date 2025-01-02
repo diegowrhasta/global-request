@@ -2,5 +2,5 @@
 
 public interface IService
 {
-    
+    bool FilesArePresent();
 }

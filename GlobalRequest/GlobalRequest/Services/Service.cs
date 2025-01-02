@@ -1,6 +1,9 @@
 ﻿namespace GlobalRequest.Services;
 
-public class Service
+public class Service : IService
 {
-    
+    public bool FilesArePresent()
+    {
+        return HttpContextHelper.Current.Request.Form.Files.Any();
+    }
 }
