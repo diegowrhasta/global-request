@@ -1,3 +1,4 @@
+using GlobalRequest.Controllers;
 using GlobalRequest.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddControllers();
 
 builder.Services.AddSingleton<IService, Service>();
 
@@ -29,6 +31,8 @@ var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
+
+app.MapControllers();
 
 app.MapGet("/weatherforecast", () =>
     {
@@ -57,6 +61,20 @@ app.MapPost("/static", () => new
 app.MapPost("/service", (IService service) => new
 {
     FilesPresent = service.FilesArePresent(),
+});
+
+app.MapPost("/coupled-controller", () =>
+{
+    var controller = new DummyController();
+
+    controller.GetMvc();
+
+    return Results.Ok("Did the processing :)");
+});
+
+app.MapGet("/location", () => new
+{
+    Path = HttpContextHelper.Current.Request.Path.Value,
 });
 
 app.Run();

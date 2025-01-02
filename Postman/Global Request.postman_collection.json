@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "c194b0ca-371f-4e7f-90fe-0b7a0858346f",
+		"name": "Global Request",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7536603"
+	},
+	"item": [
+		{
+			"name": "Minimal API - Normal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "1",
+							"type": "file",
+							"src": "/E:/Documentos/Diego/Dev/Projects/global-request/LICENSE"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5162/vanilla",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5162",
+					"path": [
+						"vanilla"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Minimal API - Static Helper",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "1",
+							"type": "file",
+							"src": "/E:/Documentos/Diego/Dev/Projects/global-request/LICENSE"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5162/static",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5162",
+					"path": [
+						"static"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Minimal API - DI Service with Static Helper",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "1",
+							"type": "file",
+							"src": "/E:/Documentos/Diego/Dev/Projects/global-request/LICENSE"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5162/service",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5162",
+					"path": [
+						"service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Minimal API - Controller Dependency Anti-Pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "1",
+							"type": "file",
+							"src": "/E:/Documentos/Diego/Dev/Projects/global-request/LICENSE"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5162/coupled-controller",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5162",
+					"path": [
+						"coupled-controller"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MVC Controller - Open Endpoint",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "1",
+							"type": "file",
+							"src": "/E:/Documentos/Diego/Dev/Projects/global-request/LICENSE"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5162/dummy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5162",
+					"path": [
+						"dummy"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
