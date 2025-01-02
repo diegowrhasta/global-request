@@ -150,6 +150,25 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Location Resolver",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5162/location",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5162",
+					"path": [
+						"location"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
