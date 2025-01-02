@@ -41,5 +41,13 @@ instance that we can then leverage in order to reference in our static helper th
 _Request_ instance in which we can access many (if not all) the methods that we would 
 have available through the injected properties mentioned in the previous sections.
 
+## Information about project
+
+There are 5 endpoints, 4 are Minimal APIs and 1 is a normal MVC controller. Each 
+one tests out how we can access both the injected properties and the reference in 
+the static helper. As a conclusion we see how through the usage of the `HttpContextAccesor` 
+we get rid of possible confusions or errors when working with multiple controllers 
+that could have null or other references in said conventional _Request_ properties.
+
 ## Accessing Server's Paths
 
